@@ -3,6 +3,7 @@ package com.example.dreamdiary.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -21,6 +22,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableContainer;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -43,31 +45,35 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
 import java.lang.reflect.GenericDeclaration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     Gson gson = new Gson();
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         TextView textview = new TextView(this);
-
-
         super.onCreate(savedInstanceState);
+        SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String date = now.format(formatter);
+        String strContact = sp.getString(date, "");
+        if(strContact.isEmpty()) {
+            Intent intent = new Intent(this, EmojiActivity.class);
+            startActivity(intent);
+        }
         setContentView(R.layout.activity_main);
-
-        MaterialCalendarView calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
-
-        calendar.addDecorator(new myDeco(this));
 
         Intent intent = getIntent();
 
-
         //일기 가져오기
-        SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
-        String strContact = sp.getString("2021/12/11", "");
-
+        sp = getSharedPreferences("shared", MODE_PRIVATE);
+        strContact = sp.getString("2021/12/11", "");
         if(!strContact.isEmpty()){
             Diary diary = gson.fromJson(strContact, Diary.class);
             System.out.println(diary.getEmoji());
@@ -75,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(diary.getKeywords().get(i));
             }
         }
+
+        MaterialCalendarView calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
+        calendar.addDecorator(new myDeco(this));
     }
 }
 

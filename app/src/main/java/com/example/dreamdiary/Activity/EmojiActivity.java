@@ -1,11 +1,13 @@
 package com.example.dreamdiary.Activity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -19,13 +21,15 @@ import com.example.dreamdiary.R;
 
 import java.lang.reflect.TypeVariable;
 import java.text.Format;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class EmojiActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         int unicode = 0x1F60A;
 
         String emoji;

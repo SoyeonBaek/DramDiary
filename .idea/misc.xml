@@ -7,10 +7,13 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/drawable/emoji.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/layout/activity_draw.xml" value="0.2286527514231499" />
         <entry key="app/src/main/res/layout/activity_emoji.xml" value="0.27398871585395906" />
         <entry key="app/src/main/res/layout/activity_keyword.xml" value="0.12864583333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.422680412371134" />
         <entry key="app/src/main/res/layout/activity_sticker.xml" value="0.12135416666666667" />
+        <entry key="app/src/main/res/layout/activity_test.xml" value="0.12864583333333332" />
+        <entry key="app/src/main/res/layout/test.xml" value="0.320109439124487" />
       </map>
     </option>
   </component>

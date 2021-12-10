@@ -71,7 +71,10 @@ public class KeywordActivity extends AppCompatActivity {
         editor.commit(); //완료한다.
 
 
-        Intent intent = new Intent(KeywordActivity.this, MainActivity.class);
+        Intent intent = new Intent(KeywordActivity.this, DrawActivity.class);
+        if(diary != null){
+            intent.putExtra("diary", diary);
+        }
         startActivity(intent);
     }
 }

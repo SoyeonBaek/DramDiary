@@ -51,13 +51,14 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    Diary diary;
     Gson gson = new Gson();
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        TextView textview = new TextView(this);
         super.onCreate(savedInstanceState);
+
         SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -69,19 +70,22 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         //일기 가져오기
-        sp = getSharedPreferences("shared", MODE_PRIVATE);
-        strContact = sp.getString("2021/12/11", "");
+        strContact = sp.getString("2021/12/10", "");
         if(!strContact.isEmpty()){
-            Diary diary = gson.fromJson(strContact, Diary.class);
+            diary = gson.fromJson(strContact, Diary.class);
             System.out.println(diary.getEmoji());
             for(int i = 0; i< diary.getKeywords().size(); i++){
                 System.out.println(diary.getKeywords().get(i));
             }
         }
 
+        //TestCode
+        System.out.println("emoji"+diary.getEmoji());
+        System.out.println("keyword"+diary.getKeywords());
+        System.out.println("canvas"+diary.getCanvas());
         MaterialCalendarView calendar = (MaterialCalendarView) findViewById(R.id.calendarView);
         calendar.addDecorator(new myDeco(this));
     }

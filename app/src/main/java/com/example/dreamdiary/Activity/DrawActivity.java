@@ -98,7 +98,7 @@ public class DrawActivity extends AppCompatActivity {
         diary = (Diary)intent.getParcelableExtra("diary");
 
         final MyView m = new MyView(this);
-        /* ----- 색 변경 ------ */
+
         findViewById(R.id.Red).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +120,7 @@ public class DrawActivity extends AppCompatActivity {
 
         clearbtn = findViewById(R.id.Clear);
         drawlinear = findViewById(R.id.draw_linear);
-        clearbtn.setOnClickListener(new View.OnClickListener() { //지우기 버튼 눌렸을때
+        clearbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 points.clear();
@@ -140,7 +140,6 @@ public class DrawActivity extends AppCompatActivity {
                 b = compressBitmap(b);
                 String bitmap = gson.toJson(b);
                 diary.setCanvas(bitmap);
-                //저장
 
                 String strContact = gson.toJson(diary);
                 LocalDate now = LocalDate.now();
@@ -148,8 +147,8 @@ public class DrawActivity extends AppCompatActivity {
                 String date = now.format(formatter);
                 SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putString(date, strContact); // JSON으로 변환한 객체를 저장한다.
-                editor.commit(); //완료한다.
+                editor.putString(date, strContact);
+                editor.commit();
 
                 Intent intent = new Intent(DrawActivity.this, MainActivity.class);
                 startActivity(intent);

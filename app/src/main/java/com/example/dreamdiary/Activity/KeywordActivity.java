@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class KeywordActivity extends AppCompatActivity {
 
+
     String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈"};
     Diary diary;
 
@@ -59,7 +60,7 @@ public class KeywordActivity extends AppCompatActivity {
         }
         diary.setKeywords(keywordList);
 
-        //저장
+        /*
         Gson gson = new GsonBuilder().create();
         String strContact = gson.toJson(diary);
         LocalDate now = LocalDate.now();
@@ -67,8 +68,9 @@ public class KeywordActivity extends AppCompatActivity {
         String date = now.format(formatter);
         SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putString(date, strContact); // JSON으로 변환한 객체를 저장한다.
-        editor.commit(); //완료한다.
+        editor.putString(date, strContact);
+        editor.commit();
+        */
 
 
         Intent intent = new Intent(KeywordActivity.this, DrawActivity.class);

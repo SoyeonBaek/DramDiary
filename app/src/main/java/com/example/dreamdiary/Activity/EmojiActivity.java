@@ -48,7 +48,7 @@ public class EmojiActivity extends AppCompatActivity {
             emoji_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //ㅎㅘ면에서 intㅈㅓㅇ보를 받아옴
+
 
                     Intent intent = new Intent(EmojiActivity.this, KeywordActivity.class);
                     Diary diary = new Diary();

@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamDiary">
-        <activity android:name=".Activity.StatisticActivity">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,6 +23,8 @@
         <activity android:name=".Activity.EmojiActivity">
         </activity>
         <activity android:name=".Activity.TestActivity">
+        </activity>
+        <activity android:name=".Activity.StatisticActivity">
         </activity>
 
 

@@ -35,7 +35,9 @@ public class EmojiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_emoji);
         String emoji;
         GridLayout grid = (GridLayout)findViewById(R.id.gridLayout);
-
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("date");
+        System.out.println("test" + date);
 
         for(int i = 0; i < 56; i++ ) {
             Button emoji_button = new Button(this);
@@ -55,6 +57,7 @@ public class EmojiActivity extends AppCompatActivity {
                     if(diary != null){
                         intent.putExtra("diary", diary);
                     }
+                    intent.putExtra("date", date);
                     startActivity(intent);
                 }
             });

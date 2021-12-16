@@ -1,23 +1,28 @@
 package com.example.dreamdiary.Data;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.view.View;
+import android.util.Base64;
 
-import com.example.dreamdiary.Activity.DrawActivity;
-
-import java.lang.reflect.Array;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Diary implements Parcelable {
 
-    //bitmap image
-    Bitmap canvas;
 
+
+    //Field
+    String canvas; // 사용할 때 getBitmapFromString() 이용하기. -> return Bitmap
     int emoji;
+    String context;
     ArrayList<String> keywords;
+
+
+
+
+
 
     public void setContext(String context) {
         this.context = context;
@@ -27,14 +32,14 @@ public class Diary implements Parcelable {
         return context;
     }
 
-    String context;
 
 
-    public void setCanvas(Bitmap canvas) {
+
+    public void setCanvas(String canvas) {
         this.canvas = canvas;
     }
 
-    public Bitmap getCanvas() {
+    public String getCanvas() {
         return canvas;
     }
 
@@ -47,7 +52,7 @@ public class Diary implements Parcelable {
     protected Diary(Parcel in) {
         emoji = in.readInt();
         keywords= in.readArrayList(String.class.getClassLoader());
-        canvas= (Bitmap) in.readValue(Bitmap.class.getClassLoader());
+        canvas= in.readString();
 
     }
 
@@ -79,7 +84,7 @@ public class Diary implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(this.emoji);
         parcel.writeArray(this.keywords.toArray());
-        parcel.writeValue(this.canvas);
+        parcel.writeString(this.canvas);
     }
 
     public int getEmoji() {
@@ -87,5 +92,20 @@ public class Diary implements Parcelable {
     }
     public ArrayList<String> getKeywords() {
         return keywords;
+    }
+
+    public Bitmap getBitmapFromString(String stringPicture) {
+        byte[] decodedString = Base64.decode(stringPicture, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return decodedByte;
+    }
+
+    public String getStringFromBitmap(Bitmap bitmapPicture) {
+        String encodedImage;
+        ByteArrayOutputStream byteArrayBitmapStream = new ByteArrayOutputStream();
+        bitmapPicture.compress(Bitmap.CompressFormat.PNG, 100, byteArrayBitmapStream);
+        byte[] b = byteArrayBitmapStream.toByteArray();
+        encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+        return encodedImage;
     }
 }

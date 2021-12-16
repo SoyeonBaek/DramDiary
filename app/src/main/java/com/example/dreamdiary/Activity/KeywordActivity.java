@@ -26,6 +26,7 @@ public class KeywordActivity extends AppCompatActivity {
 
     String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈", "졸림"};
     Diary diary;
+    String date;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,6 +35,7 @@ public class KeywordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_keyword);
 
         Intent intent = getIntent();
+        date = intent.getStringExtra("date");
         diary = (Diary)intent.getParcelableExtra("diary");
 
 
@@ -77,6 +79,7 @@ public class KeywordActivity extends AppCompatActivity {
         if(diary != null){
             intent.putExtra("diary", diary);
         }
+        intent.putExtra("date", date);
         startActivity(intent);
     }
 }

@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -85,6 +86,7 @@ public class DrawActivity extends AppCompatActivity {
     }
 
     Diary diary;
+    String date;
 
     ArrayList<Point> points = new ArrayList<Point>();
     Button draw_red_btn,draw_blue_btn,draw_black_btn,clearbtn;
@@ -97,7 +99,11 @@ public class DrawActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw);
         Intent intent = getIntent();
-        diary = (Diary)intent.getParcelableExtra("diary");
+
+        System.out.println("null?");
+        date = intent.getStringExtra("date");
+        diary = (Diary) intent.getParcelableExtra("diary");
+
 
         final MyView m = new MyView(this);
 
@@ -144,15 +150,20 @@ public class DrawActivity extends AppCompatActivity {
                 Gson gson = new GsonBuilder().create();
                 Bitmap b = getBitmapFromView(m);
                 b = compressBitmap(b);
-                diary.setCanvas(b);
+                diary.setCanvas(diary.getStringFromBitmap(b));
 
                 String strContact = gson.toJson(diary);
                 LocalDate now = LocalDate.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-                String date = now.format(formatter);
+                String date1 = now.format(formatter);
                 SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
-                editor.putString(date, strContact);
+                if(date == null) {
+                    editor.putString(date1, strContact);
+                }
+                else {
+                    editor.putString(date, strContact);
+                }
                 editor.commit();
 
                 Intent intent = new Intent(DrawActivity.this, MainActivity.class);
@@ -178,5 +189,6 @@ public class DrawActivity extends AppCompatActivity {
         Bitmap compressedBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
         return compressedBitmap;
     }
+
 
 }

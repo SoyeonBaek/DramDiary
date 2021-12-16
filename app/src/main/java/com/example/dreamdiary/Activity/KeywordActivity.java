@@ -24,7 +24,8 @@ import java.util.ArrayList;
 public class KeywordActivity extends AppCompatActivity {
 
 
-    String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈", "졸림"};
+    String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "웃긴 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈",
+            "꿈에서도 졸림", "동물 꿈", "루시드 드림", "쫒기는 꿈", "배고픈 꿈", "태몽"};
     Diary diary;
     String date;
 

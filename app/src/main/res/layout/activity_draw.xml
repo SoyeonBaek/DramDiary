@@ -83,11 +83,12 @@
         app:layout_constraintTop_toBottomOf="@+id/draw_linear"
         tools:ignore="SpeakableTextPresentCheck">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputEditText>
 
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

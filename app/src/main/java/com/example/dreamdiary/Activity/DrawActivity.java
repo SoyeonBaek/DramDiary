@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import com.example.dreamdiary.Data.Diary;
@@ -135,11 +136,14 @@ public class DrawActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+
+                EditText editText = (EditText)findViewById(R.id.context);
+                diary.setContext(editText.getText().toString());
+
                 Gson gson = new GsonBuilder().create();
                 Bitmap b = getBitmapFromView(m);
                 b = compressBitmap(b);
-                String bitmap = gson.toJson(b);
-                diary.setCanvas(bitmap);
+                diary.setCanvas(b);
 
                 String strContact = gson.toJson(diary);
                 LocalDate now = LocalDate.now();

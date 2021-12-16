@@ -50,6 +50,7 @@ public class EmojiActivity extends AppCompatActivity {
                 public void onClick(View view) {
 
 
+
                     Intent intent = new Intent(EmojiActivity.this, KeywordActivity.class);
                     Diary diary = new Diary();
                     diary.setEmoji(view.getId());

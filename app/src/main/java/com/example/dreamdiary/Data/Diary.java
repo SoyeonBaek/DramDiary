@@ -12,16 +12,29 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Diary implements Parcelable {
-    String canvas;
+
+    //bitmap image
+    Bitmap canvas;
+
     int emoji;
     ArrayList<String> keywords;
 
+    public void setContext(String context) {
+        this.context = context;
+    }
 
-    public void setCanvas(String canvas) {
+    public String getContext() {
+        return context;
+    }
+
+    String context;
+
+
+    public void setCanvas(Bitmap canvas) {
         this.canvas = canvas;
     }
 
-    public String getCanvas() {
+    public Bitmap getCanvas() {
         return canvas;
     }
 
@@ -34,7 +47,8 @@ public class Diary implements Parcelable {
     protected Diary(Parcel in) {
         emoji = in.readInt();
         keywords= in.readArrayList(String.class.getClassLoader());
-        canvas= in.readString();
+        canvas= (Bitmap) in.readValue(Bitmap.class.getClassLoader());
+
     }
 
     public void setEmoji(int emoji) {
@@ -65,7 +79,7 @@ public class Diary implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(this.emoji);
         parcel.writeArray(this.keywords.toArray());
-        parcel.writeString(this.canvas);
+        parcel.writeValue(this.canvas);
     }
 
     public int getEmoji() {

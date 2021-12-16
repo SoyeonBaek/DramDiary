@@ -21,12 +21,15 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //이거
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         Diary diary = (Diary)intent.getParcelableExtra("diary");
 
         System.out.println("test");
         System.out.println(diary.getEmoji());
+
+        //이거
         setContentView(R.layout.activity_test);
     }
 }

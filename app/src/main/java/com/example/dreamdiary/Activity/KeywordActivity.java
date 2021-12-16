@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class KeywordActivity extends AppCompatActivity {
 
 
-    String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈"};
+    String[] keywords = {"행복한 꿈", "즐거운 꿈", "슬픈 꿈", "무서운 꿈", "신기한 꿈", "추락하는 꿈", "졸림"};
     Diary diary;
 
     @SuppressLint("SetTextI18n")

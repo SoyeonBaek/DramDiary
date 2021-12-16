@@ -12,6 +12,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -28,6 +29,11 @@ public class StatisticActivity extends AppCompatActivity {
 
     private BarChart barChart;
     Gson gson = new Gson();
+
+    public String getEmojiByUnicode(int unicode){
+        return new String(Character.toChars(unicode));
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,16 +59,20 @@ public class StatisticActivity extends AppCompatActivity {
             }
         }
 
+        ArrayList<String> labels = new ArrayList<String>();
         int index = 0;
         for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
-            entries.add(new BarEntry(entry.getKey(), entry.getValue()));
+            labels.add(getEmojiByUnicode(entry.getKey()));
+            entries.add(new BarEntry(entry.getValue(), index));
             index++;
             if (index == 5) break;
         }
-
         BarDataSet barDataSet = new BarDataSet(entries, "emoji");
+        barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
+        BarData barData = new BarData(labels, barDataSet);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getXAxis().setDrawGridLines(false);
 
-        BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
 
     }

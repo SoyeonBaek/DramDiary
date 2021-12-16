@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.dreamdiary.Data.Diary;
 import com.example.dreamdiary.R;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.google.gson.Gson;
@@ -60,6 +61,9 @@ public class StatisticActivity extends AppCompatActivity {
         }
 
         BarDataSet barDataSet = new BarDataSet(entries, "emoji");
+
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
 
     }
 }

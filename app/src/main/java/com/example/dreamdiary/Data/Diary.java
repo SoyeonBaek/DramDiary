@@ -27,7 +27,6 @@ public class Diary implements Parcelable {
     public void setContext(String context) {
         this.context = context;
     }
-
     public String getContext() {
         return context;
     }
@@ -38,7 +37,6 @@ public class Diary implements Parcelable {
     public void setCanvas(String canvas) {
         this.canvas = canvas;
     }
-
     public String getCanvas() {
         return canvas;
     }
@@ -59,8 +57,8 @@ public class Diary implements Parcelable {
     public void setEmoji(int emoji) {
         this.emoji = emoji;
     }
-    public void setKeywords(ArrayList<String> keywords){
-        this.keywords = keywords;
+    public int getEmoji() {
+        return this.emoji;
     }
 
     public static final Creator<Diary> CREATOR = new Creator<Diary>() {
@@ -87,8 +85,8 @@ public class Diary implements Parcelable {
         parcel.writeString(this.canvas);
     }
 
-    public int getEmoji() {
-        return this.emoji;
+    public void setKeywords(ArrayList<String> keywords){
+        this.keywords = keywords;
     }
     public ArrayList<String> getKeywords() {
         return keywords;

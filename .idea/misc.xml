@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="..\:/android-workspace/SE-termproject/DreamDiary/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/android-workspace/SE-termproject/DreamDiary/app/src/main/res/layout/activity_test.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-small/emoji.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/drawable/emoji.xml" value="0.14479166666666668" />
@@ -12,7 +13,6 @@
         <entry key="app/src/main/res/layout/activity_emoji.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_keyword.xml" value="0.12864583333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25252467802830275" />
-        <entry key="app/src/main/res/layout/activity_statistic.xml" value="0.12234042553191489" />
         <entry key="app/src/main/res/layout/activity_sticker.xml" value="0.12135416666666667" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.12864583333333332" />
         <entry key="app/src/main/res/layout/test.xml" value="0.320109439124487" />

@@ -16,6 +16,13 @@
         android:layout_marginTop="20dp"
         android:textSize="34sp" />
 
+    <Button
+        android:layout_width="115dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center"
+        android:onClick="buttonClick"
+        android:text="완료"></Button>
+
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"

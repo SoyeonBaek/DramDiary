@@ -30,10 +30,10 @@ public class EmojiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("created");
         int unicode = 0x1F60A;
-
-        String emoji;
         setContentView(R.layout.activity_emoji);
+        String emoji;
         GridLayout grid = (GridLayout)findViewById(R.id.gridLayout);
 
 
@@ -49,8 +49,6 @@ public class EmojiActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-
-
                     Intent intent = new Intent(EmojiActivity.this, KeywordActivity.class);
                     Diary diary = new Diary();
                     diary.setEmoji(view.getId());
@@ -62,6 +60,7 @@ public class EmojiActivity extends AppCompatActivity {
             });
             grid.addView(emoji_button);
         }
+
     }
 
     public String getEmojiByUnicode(int unicode){

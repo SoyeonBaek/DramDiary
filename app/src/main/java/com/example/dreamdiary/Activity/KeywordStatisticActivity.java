@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class StatisticActivity extends AppCompatActivity {
+public class KeywordStatisticActivity extends AppCompatActivity {
 
     private BarChart barChart;
     Gson gson = new Gson();
@@ -45,24 +45,33 @@ public class StatisticActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("shared", MODE_PRIVATE);
 
-        Map<String, ?> allEntries = sp.getAll();
-        Comparator<Integer> comparator = (s1, s2)->s2.compareTo(s1);
-        Map<Integer, Integer> cnt = new TreeMap<Integer, Integer>(comparator);
+        Map<String, LinkedList<String>> allEntries = (Map<String, LinkedList<String>>) sp.getAll();
+        Map<String, Integer> cnt = new HashMap<String, Integer>();
 
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
             Diary diary = gson.fromJson(entry.getValue().toString(), Diary.class);
-            int emoji = diary.getEmoji();
-            if(cnt.containsKey(emoji)) {
-                cnt.put(emoji, cnt.get(emoji) + 1);
-            } else {
-                cnt.put(emoji, 1);
+            ArrayList<String> keywords = diary.getKeywords();
+            for (String keyword : keywords) {
+                if (cnt.containsKey(keyword)) {
+                    cnt.put(keyword, cnt.get(keyword) + 1);
+                } else {
+                    cnt.put(keyword, 1);
+                }
             }
         }
 
+        List<String> keySetList = new ArrayList<String>(cnt.keySet());
+        Collections.sort(keySetList, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return cnt.get(o2).compareTo(cnt.get(o1));
+            }
+        });
+
         ArrayList<String> labels = new ArrayList<String>();
         int index = 0;
-        for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
-            labels.add(getEmojiByUnicode(entry.getKey()));
+        for (Map.Entry<String, Integer> entry : cnt.entrySet()) {
+            labels.add(entry.getKey());
             entries.add(new BarEntry(entry.getValue(), index));
             index++;
             if (index == 5) break;

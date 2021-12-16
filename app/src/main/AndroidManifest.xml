@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".Activity.TestActivity">
         </activity>
-        <activity android:name=".Activity.StatisticActivity">
+        <activity android:name=".Activity.EmojiStatisticActivity">
+        </activity>
+        <activity android:name=".Activity.KeywordStatisticActivity">
         </activity>
 
 

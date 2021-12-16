@@ -32,11 +32,28 @@
         app:mcv_selectionColor="#a9dbf0cb"
         app:mcv_showOtherDates="defaults" />
 
-    <Button
-        android:layout_width="400dp"
-        android:layout_height="67dp"
-        android:layout_gravity="center"
-        android:onClick="showStatistic"
-        android:text="통계보기"></Button>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:onClick="showStatistic1"
+            android:text="스티커통계">
+
+        </Button>
+
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:onClick="showStatistic2"
+            android:text="키워드통계">
+
+        </Button>
+    </LinearLayout>
 
 </LinearLayout>

@@ -21,7 +21,8 @@
         android:layout_height="67dp"
         android:layout_gravity="center"
         android:onClick="buttonClick"
-        android:text="완료"></Button>
+        android:text="오늘 일기 삭제">
+    </Button>
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
@@ -30,5 +31,12 @@
         android:layout_marginTop="50dp"
         app:mcv_selectionColor="#a9dbf0cb"
         app:mcv_showOtherDates="defaults" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center"
+        android:onClick="showStatistic"
+        android:text="통계보기"></Button>
 
 </LinearLayout>
